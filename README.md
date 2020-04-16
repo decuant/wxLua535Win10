@@ -18,17 +18,14 @@ Uses CMake for building wx.dll
 
 CMake 3.17.0
 
-## wxWidgets and Lua installation
+## Installation
 
-Only the steps for installation on Windows will be listed. although it shall 
-run on Linux and MacOs too.  
-
-3. Copy files to a directory of choice (something like. c:\wxLua535\bin).  
-4. Open the Windows' control panel and the Advanced System Settings.  
-5. Open the Environment Variables editor.
-6. Create an entry for the User with the following line: 
+1. Copy files to a directory of choice (something like c:\wxLua535\bin).  
+2. Open the Windows' control panel and the Advanced System Settings.  
+3. Open the Environment Variables editor.
+4. Create an entry for the User with the following line: 
 	``LUA_CPATH=c:\wxLua535\bin\?.dll``
-7. Add c:\wxLua535\bin to the System's PATH variable:
+5. Add c:\wxLua535\bin to the User's PATH variable:
 
 ![Windows Environment](/doc/Environment.png)
 
