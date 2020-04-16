@@ -30,7 +30,7 @@ run on Linux and MacOs too.
 	``LUA_CPATH=c:\wxLua535\bin\?.dll``
 7. Add c:\wxLua535\bin to the System's PATH variable:
 
-![Windows Environment](Environment.png)
+![Windows Environment](/doc/Environment.png)
 
 
 ## Author
