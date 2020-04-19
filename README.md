@@ -1,6 +1,6 @@
 # Project Description
 
-## 0.0.1 (16-Apr-2020)
+## 0.0.2 (19-Apr-2020)
 
 **wxLua535Win10** is a container for **wxWidgets-3.1.3** built against **Lua 5.3.5**.
 
@@ -12,13 +12,17 @@ Have fun with Lua!
 
 ## Features
 
+Compilation of **lua.exe** with embedded manifest to define the [High DPI Aware] flag. It needs lua53.dll to run, thus it does not follow the recommendation of including all sources.
+
+The **lua.exe** and **lua53.dll** use the original released sources with no wizardries. This project might differ from other pre-built distributions, it will accept only the new binary operators. You can see it for yourself trying using **bit32**, in case of abort because of deprecation then you are using the original sources, otherwise you have a non-standard distribution. It might not be such a big issue on your side.
+
+The **wxLua 3.0.0.8** in this project is not standard as it has to accomodate for the binary operators issue as said above. Basically, I commented out a few lines of code...
+
 Compiled with Visual Studio Pro. 2015, version 14.0.25431.01 update 3.
 
 Supported platform is Windows 10.0.14393.0 (not Windows 8.1).
 
-Since the executables provided by Tecgraf/PUC-Rio are 32 bits then lua53.dll and wx.dll are 32 bits.
-
-These are Release versions with no debug information.
+These are Release versions with no debug information, **32 bits**.
 
 Build of each project (cascade to subprojects) has full optimization favouring speed.
 
@@ -47,7 +51,7 @@ CMake 3.17.0
 
 ## Notes
 
-1. If you use ZeroBrane then be aware that by default the Lua 5.3 in use is the one shipped with ZeroBrane, which is ok.
+1. If you use ZeroBrane then be aware that by default the Lua 5.3 in use is the one shipped with ZeroBrane, which is ok, but not the original 5.3.5.
 
 2. You might have to fix your existing code because of the many deprecated constants and (some) functions in wxWidgets, the latest release I was using was wxWidgets 2.8.12.
 
