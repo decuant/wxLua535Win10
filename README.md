@@ -43,7 +43,7 @@ CMake 3.17.0
 ## Installation
 
 1. Copy files to a directory of choice (something like c:\wxLua535\bin).
-2. Copy ``exe`` and ``dll`` files in ``\bin\32bit`` or ``bin\64bit`` to ``bin`` (a folder up...).
+2. Copy ``exe`` and ``dll`` files in ``bin\32bit`` or ``bin\64bit`` to ``bin`` (a folder up...).
 3. Open the Windows' control panel and the Advanced System Settings.
 4. Open the Environment Variables editor.
 5. Create an entry for the User with the following line: 
