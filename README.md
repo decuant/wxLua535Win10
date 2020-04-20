@@ -32,10 +32,10 @@ Build of each project (cascade to subprojects) has full optimization favouring s
 
 Uses sources from:
 
-``Lua 5.3.5``
-``wxWidgets-3.1.3``
-``wxLua 3.0.0.8``
-``LuaSocket 3.0-rc1``
+  ``Lua 5.3.5``
+  ``wxWidgets-3.1.3``
+  ``wxLua 3.0.0.8``
+  ``LuaSocket 3.0-rc1``
 
 Uses CMake for building wx.dll
 
@@ -47,29 +47,28 @@ Uses CMake for building wx.dll
 2. Copy ``exe`` and ``dll`` files in ``bin\32bit`` or ``bin\64bit`` to ``bin`` (a folder up...).
 3. Open the Windows' control panel and the Advanced System Settings.
 4. Open the Environment Variables editor.
-5. Create an entry for the User with the following line: 
-	``LUA_CPATH=c:\wxLua535\bin\?.dll``
-6. Add c:\wxLua535\bin to the User's PATH variable:
+5. Create an entry for the User with the following line: ``LUA_CPATH=c:\wxLua535\bin\?.dll``
+6. Add ``c:\wxLua535\bin`` to the User's PATH variable:
 
 ![Windows Environment](/doc/Environment.png)
 
 ## Notes
 
 1. If you use ZeroBrane then be aware that by default the Lua 5.3 in use is the one shipped with ZeroBrane, which is ok, but not the original 5.3.5.
-
-   You can change ZeroBrane's lua53.exe with a 64bit implementation (or original 32bit):
-
-    .a Open a Command Prompt with Admin Privilegies and ``cd "C:\Program Files (x86)\ZeroBrane\bin"``
-    .b Rename ``lua53.exe`` to ``__lua53.exe``
-    .c Rename ``lua53.dll`` to ``__lua53.dll``
-    .d Issue  ``mklink "C:\Program Files (x86)\ZeroBrane\bin\lua53.exe" C:\wxLua535\bin\lua.exe``
-
-    .e To fix the debugger ``cd "C:\Program Files (x86)\ZeroBrane\bin\clibs53\socket"``
-    .f Rename ``core.dll`` to ``__core.dll``
-    .g Issue  ``mklink "C:\Program Files (x86)\ZeroBrane\bin\clibs53\socket\core.dll" C:\wxLua535\bin\socket.dll``
-
+   
+   You can change ZeroBrane's lua53.exe with a 64bit implementation (or original 32bit):  
+    
+    a.  Open a Command Prompt with Admin Privilegies and ``cd "C:\Program Files (x86)\ZeroBrane\bin"``  
+    b.  Rename ``lua53.exe`` to ``__lua53.exe``  
+    c.  Rename ``lua53.dll`` to ``__lua53.dll``  
+    d.  Issue  ``mklink "C:\Program Files (x86)\ZeroBrane\bin\lua53.exe" C:\wxLua535\bin\lua.exe``  
+    
+    e.  To fix the debugger ``cd "C:\Program Files (x86)\ZeroBrane\bin\clibs53\socket"``  
+    f.  Rename ``core.dll`` to ``__core.dll``  
+    g.  Issue  ``mklink "C:\Program Files (x86)\ZeroBrane\bin\clibs53\socket\core.dll" C:\wxLua535\bin\socket.dll``  
+    
     Will work right away.
-
+    
     Note that the compile funtion will fail on binary operators (I suppose it uses an older release 5.1 or 5.2 for compiling).
 
 2. You might have to fix your existing code because of the many deprecated constants and (some) functions in wxWidgets, the latest release I was using was wxWidgets 2.8.12.
