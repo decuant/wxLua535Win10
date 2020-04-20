@@ -32,13 +32,14 @@ Build of each project (cascade to subprojects) has full optimization favouring s
 
 Uses sources from:
 
-Lua 5.3.5
-wxWidgets-3.1.3
-wxLua 3.0.0.8
+``Lua 5.3.5``
+``wxWidgets-3.1.3``
+``wxLua 3.0.0.8``
+``LuaSocket 3.0-rc1``
 
 Uses CMake for building wx.dll
 
-CMake 3.17.0
+``CMake 3.17.0``
 
 ## Installation
 
@@ -56,21 +57,24 @@ CMake 3.17.0
 
 1. If you use ZeroBrane then be aware that by default the Lua 5.3 in use is the one shipped with ZeroBrane, which is ok, but not the original 5.3.5.
 
-2. You can change ZeroBrane's lua53.exe with a 64bit implementation (or original 32bit):
+   You can change ZeroBrane's lua53.exe with a 64bit implementation (or original 32bit):
 
-    .a Open a Command Prompt with Admin Privilegies and cd "C:\Program Files (x86)\ZeroBrane\bin"
-    
+    .a Open a Command Prompt with Admin Privilegies and ``cd "C:\Program Files (x86)\ZeroBrane\bin"``
     .b Rename ``lua53.exe`` to ``__lua53.exe``
-    
     .c Rename ``lua53.dll`` to ``__lua53.dll``
-    
     .d Issue  ``mklink "C:\Program Files (x86)\ZeroBrane\bin\lua53.exe" C:\wxLua535\bin\lua.exe``
 
-    Will work right away. The compile funtion will fail on binary operators (I suppose it uses an older release), and the debugger fails because ``socket.core`` is 32bit.
+    .e To fix the debugger ``cd "C:\Program Files (x86)\ZeroBrane\bin\clibs53\socket"``
+    .f Rename ``core.dll`` to ``__core.dll``
+    .g Issue  ``mklink "C:\Program Files (x86)\ZeroBrane\bin\clibs53\socket\core.dll" C:\wxLua535\bin\socket.dll``
+
+    Will work right away.
+
+    Note that the compile funtion will fail on binary operators (I suppose it uses an older release 5.1 or 5.2 for compiling).
 
 2. You might have to fix your existing code because of the many deprecated constants and (some) functions in wxWidgets, the latest release I was using was wxWidgets 2.8.12.
 
-3. You cannot mix 32bit and 64bit modules! If unsure run ``sigcheck64.exe`` (see screenshots in doc folder).
+3. You **cannot mix 32bit and 64bit modules**! If unsure run ``sigcheck64.exe`` (see screenshots in doc folder).
 
 4. Provided samples are just a quick test for correct installation.
 
