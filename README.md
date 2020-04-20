@@ -58,7 +58,7 @@ CMake 3.17.0
 
 2. You can change ZeroBrane's lua53.exe with a 64bit implementation (or original 32bit):
 
-    .a Open a Command Prompt with Admin Privilegies and cd "C:\Program Files (x86)\ZeroBrane\bin\lua53.exe"
+    .a Open a Command Prompt with Admin Privilegies and cd "C:\Program Files (x86)\ZeroBrane\bin"
     .b Rename ``lua53.exe`` to ``__lua53.exe``
     .c Rename ``lua53.dll`` to ``__lua53.dll``
     .d Issue  ``mklink "C:\Program Files (x86)\ZeroBrane\bin\lua53.exe" C:\wxLua535\bin\lua.exe``
