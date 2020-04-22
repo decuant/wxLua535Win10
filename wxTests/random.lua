@@ -1,5 +1,5 @@
 --[[
-* routine for a very-long-cycle random-number sequences
+*	routine for a very-long-cycle random-number sequences
 *
 *	this random number generator was proved to generate random sequences
 *	between 0 to 1 which if 100 numbers were calculated every second, it
@@ -11,7 +11,7 @@
 *	Byte Magazine. March 1987. pp.127.
 ]]
 
--------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------
 --
 local Random = { }
 
@@ -19,6 +19,7 @@ Random.__index = Random
 
 -- ----------------------------------------------------------------------------
 -- instance creator
+-- (tell Lua 5.3 that numbers are floating point)
 --
 function Random.new()
 
@@ -26,16 +27,16 @@ function Random.new()
 	{
 		--	default seed values
 		--
-		_x 	= 1,
-		_y 	= 10000,
-		_z 	= 3000,
-		_last = 0,
+		_x 	= 1.0,
+		_y 	= 10000.0,
+		_z 	= 3000.0,
+		_last = 0.0,
 	}
 
 	return setmetatable(t, Random)
 end
 
--------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------
 --	seed generator
 --
 function Random.initialize(self)
@@ -51,7 +52,7 @@ function Random.initialize(self)
 	self:get()
 end
 
--------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------
 -- return the _last computed value
 --
 function Random.last(self)
@@ -59,7 +60,7 @@ function Random.last(self)
 	return self._last
 end
 
--------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------
 -- produce a new value and store it in _last
 --
 function Random.get(self)
@@ -92,7 +93,7 @@ function Random.get(self)
 	return self._last
 end
 
--------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------
 -- produce a new value inside the given interval
 --
 function Random.getBoxed(self, inMin, inMax)
@@ -102,9 +103,9 @@ function Random.getBoxed(self, inMin, inMax)
 	return self._last
 end
 
--------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------
 --
 return Random
 
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------
