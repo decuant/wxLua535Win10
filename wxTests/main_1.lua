@@ -5,7 +5,7 @@
 
 local wx		= require("wx")
 local random	= require("random")
-local palette	= require("wxPalette")
+local palette	= require("wxX11Palette")
 
 local _format	= string.format
 
@@ -44,10 +44,14 @@ end
 --
 local function CreateFrame()
 
+	-- create the frame
+	--
 	local frame = wx.wxFrame(wx.NULL, wx.wxID_ANY, "Testing the Grid control",
 							 wx.wxPoint(25, 25), 
 							 wx.wxSize(1550, 1100))
 						
+	-- creta the menu entries
+	--
 	local rcMnuRandom = UniqueID()
 
 	local mnuFile = wx.wxMenu("", wx.wxMENU_TEAROFF)
@@ -58,12 +62,18 @@ local function CreateFrame()
 	local mnuHelp = wx.wxMenu("", wx.wxMENU_TEAROFF)
 	mnuHelp:Append(wx.wxID_ABOUT, "&About\tCtrl-A", "About the application")
 
+	-- attach the menu
+	--
 	local menuBar = wx.wxMenuBar()
 	menuBar:Append(mnuFile, "&File")
 	menuBar:Append(mnuHelp, "&Help")
 
+	-- assign the menubar to this frame)
+	--
 	frame:SetMenuBar(menuBar)
 
+	-- create a statusbar with only 1 pane
+	--
 	frame:CreateStatusBar(1)
 
 	-- assign event handlers for this frame
@@ -81,10 +91,12 @@ local function CreateFrame()
 		end)
 
 	-- create the grid and set common properties
+	-- (size specified won't matter, the grid will fill all the client area)
 	--
-	local grid = wx.wxGrid(frame, wx.wxID_ANY, wx.wxDefaultPosition, wx.wxSize(800, 900))
+	local grid = wx.wxGrid(frame, wx.wxID_ANY, wx.wxDefaultPosition, wx.wxSize(80, 140))
 
 	grid:CreateGrid(iMaxRows, iMaxCols)
+	grid:SetMargins(5, 5)
 	grid:SetLabelTextColour(palette.DarkSlateGray4)
 	grid:SetGridLineColour(palette.Red4)
 	grid:SetDefaultColSize(140, false)
@@ -93,12 +105,12 @@ local function CreateFrame()
 	--
 	local fntCol = wx.wxFont( 10, wx.wxFONTFAMILY_MODERN, wx.wxFONTFLAG_ANTIALIASED,
 							  wx.wxFONTWEIGHT_LIGHT, false, "Lucida Sans Unicode")
-	
-	-- make alternating colors for all columns
-	--
+
 	local attrOdd  = wx.wxGridCellAttr(palette.Gray0, palette.Gray94, fntCol, wx.wxALIGN_CENTRE, wx.wxALIGN_CENTRE)
 	local attrEven = wx.wxGridCellAttr(palette.Gray0, palette.Gray98, fntCol, wx.wxALIGN_CENTRE, wx.wxALIGN_CENTRE)
 	
+	-- make alternating colors for all columns
+	--
 	for i=0, iMaxCols, 2 do
 		grid:SetColAttr(i, attrOdd)
 		grid:SetColAttr(i + 1, attrEven)
@@ -112,8 +124,6 @@ local function CreateFrame()
 	--
 	local icon = wx.wxIcon("test.ico", wx.wxBITMAP_TYPE_ICO)
 	frame:SetIcon(icon)
-	
-	frame:SetBackgroundColour(palette.Gray0)
 	
 	return frame
 end
