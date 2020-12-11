@@ -4,6 +4,8 @@
 
 **wxLua535Win10** is a container for **wxWidgets-3.1.3** built against **Lua 5.3.5**.
 
+---> If you are looking for a fresh version of Lua 5.4.2 and latest wxWidgets 3.0.1.4 jump to https://github.com/decuant/wxLua542Win10
+
 This project aims to relieve lazy programmmers to recompile the 3 projects.
 
 Project's name uses **Win10** suffix to not overwrite any official name from the wxLua team.
